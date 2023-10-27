@@ -16,9 +16,9 @@ import Practice from './components/Practice.vue'
   }">
   <!-- <HelloWorld  /> -->
   <!-- <Forms /> -->
-  <Modifiers />
+  <!-- <Modifiers /> -->
   <!-- <ComputedProperties /> -->
-  <!-- <Watchers /> -->
+  <Watchers />
   <Practice />
     
   </div>
