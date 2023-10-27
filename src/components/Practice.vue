@@ -1,19 +1,64 @@
 <template>
-  <div class="">
-    <h2>Volume Tracker (0-20)</h2>
-    <h2>Volume - {{volume}}</h2>
-    <button @click="volume += 2">Increment</button>
-    <button @click="volume -= 2">Decrement</button>
-
+  <div >
+    <div>
+      <pre>
+        {{ JSON.stringify(formValues, null, 2) }}
+      </pre>
+    </div>
     <div>
       <div>
-        <pre>
-          {{ JSON.stringify(movieInfo, null, 2) }}
-        </pre>
+        <label>Name</label>
+        <input type="text" id="name" v-model="formValues.name">
       </div>
-      <input type="text" v-model="movie" />
-      <input type="text" v-model="movieInfo.title" />
-      <input type="text" v-model="movieInfo.actor" />
+      <div>
+        <label for="summary">Profile summary</label>
+        <textarea id="summary" v-model="formValues.summary"></textarea>
+      </div>
+      <div for="country">Country</div>
+      <select id="country" v-model="formValues.country">
+        <option value="">Select country</option>
+        <option value="Ghana">Ghana</option>
+        <option value="Ghana">Germany</option>
+        <option value="USA">USA</option>
+        <option value="England">England</option>
+      </select>
+    </div>
+    <div>
+      <label for="jobLocation">Job Location</label>
+      <select id="jobLocation" multiple v-model="formValues.jobLocation">
+        <option value="">Select Location</option>
+        <option value="Ghana">Ghana</option>
+        <option value="USA">USA</option>
+        <option value="Remote">Remote</option>
+      </select>
+    </div>
+    <div>
+      <input id="remote" type="checkbox" v-model="formValues.remote" true-value="yes" false-value="no" />
+      <label>Open to Remote work?</label>
+    </div>
+    <div>
+      <h3>Skill set</h3>
+      <input type="checkbox" id="html" value="html" v-model="formValues.skillSet" />
+      <label for="html">HTML</label>
+      <input type="checkbox" id="css" value="css" v-model="formValues.skillSet" />
+      <label for="css">CSS</label>
+      <input type="checkbox" id="javascript" value="javascript" v-model="formValues.skillSet" />
+      <label for="javascript">JavaScript</label>
+    </div>
+    <div>
+      <h3>Year of Experience</h3>
+      <input type="radio" id="0-2" value="0-2" v-model="formValues.yearsOfExperience">
+      <label for="0-2">0 - 2</label>
+      <input type="radio" id="3-5" value="3-5" v-model="formValues.yearsOfExperience">
+      <label for="3-5">3 - 5</label>
+      <input type="radio" id="6-9" value="6-9" v-model="formValues.yearsOfExperience">
+      <label for="0-2">6 - 9</label>
+      <input type="radio" id="10+" value="10+" v-model="formValues.yearsOfExperience">
+      <label for="10+">10+</label>
+    </div>
+    <div>
+      <label for="age"></label>
+      <input type="number" id="age" v-model="formValues.age" />
     </div>
   </div>
 </template>
@@ -22,32 +67,16 @@
 export default {
   data() {
     return {
-      volume: 0,
-      movie: 'Caleb',
-      movieInfo: {
-        title: '',
-        actor: '',
+      formValues: {
+        name: '',
+        summary: '',
+        country: '',
+        jobLocation: [],
+        remote: 'no',
+        skillSet: [],
+        yearsOfExperience: '',
+        age: null,
       }
-    }
-  },
-  watch: {
-    volume(newValue, oldValue) {
-      if (newValue > oldValue && newValue === 18) {
-        alert('Listening at this volume can cause damage!');
-      }
-    },
-    movie: {
-      handler(newValue) {
-        console.log(`Calling API with movie name ${newValue}`)
-      },
-      immediate: true
-    },
-    movieInfo: {
-      handler(newValue) {
-        console.log(`Calling API with title ${newValue.title} and actor ${newValue.actor}`)
-
-      },
-      deep: true
     }
   }
 }

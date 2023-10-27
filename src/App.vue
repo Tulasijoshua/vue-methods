@@ -8,7 +8,12 @@ import Practice from './components/Practice.vue'
 </script>
 
 <template>
-  <div class="flexing">
+  <div :style="{
+    width: '80%',
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'spaceBetween'
+  }">
   <!-- <HelloWorld  /> -->
   <!-- <Forms /> -->
   <Modifiers />
